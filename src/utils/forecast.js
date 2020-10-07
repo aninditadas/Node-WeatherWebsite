@@ -5,8 +5,7 @@ const forecast = (latitude, longitude, callback) => {
     "http://api.weatherstack.com/current?access_key=901237a08162c3d2fa2b5df3a161ee0d&query=" +
     latitude +
     "," +
-    longitude +
-    "&units=f"
+    longitude
   request({url, json: true}, (error, {body}) => {
     if (error) {
       callback("unable to connect", undefined)
@@ -19,7 +18,9 @@ const forecast = (latitude, longitude, callback) => {
           ". It is " +
           body.current.temperature +
           " outside but it feels like " +
-          body.current.feelslike
+          body.current.feelslike +
+          " and the humidity is " +
+          body.current.humidity
       )
     }
   })
